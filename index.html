@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    
     <style>
       body {
         font-family: Monospace;
@@ -76,7 +77,9 @@
         float depth = smoothstep( 10.24, 1.0, gl_FragCoord.z / gl_FragCoord.w );
       
 
-        gl_FragColor = vec4(0.0, 0.0, 1.0, depth);
+        gl_FragColor = vec4((vec3(0.0, 0.5, 5.0) + (texture2D(map, vUv).xyz * 0.90)), depth);
+        
+        
 
       }
     </script>
@@ -99,7 +102,10 @@
 
       void main() {
         float depth = smoothstep( 10.24, 1.0, gl_FragCoord.z / gl_FragCoord.w );
-        gl_FragColor = vec4(0.0, 0.0, 1.0, depth);
+    
+        gl_FragColor = vec4((vec3(0.0, 0.5, 5.0) + (vPosition * 0.25)), depth);
+      
+        
 
       }
     </script>
@@ -244,7 +250,7 @@
         }
 
         // Start Creation of DataTexture
-        var textGeo = new THREE.TextGeometry( isWebGL2 ? "FILE 14" : "WebGL", {
+        var textGeo = new THREE.TextGeometry( isWebGL2 ? "FILE 14"  : "WebGL", {
           size: 1.2,
           height: 0.3,
           curveSegments: 0.1,
@@ -252,15 +258,18 @@
           weight: "bold",
           style: "normal",
         });
-
+        
         textGeo.computeBoundingBox();
+        
         var bounds = textGeo.boundingBox;
+
         textGeo.applyMatrix( new THREE.Matrix4().makeTranslation(
           (bounds.max.x - bounds.min.x) * -0.5,
           (bounds.max.y - bounds.min.y) * -0.5,
           (bounds.max.z - bounds.min.z) * -0.5));
 
         points = THREE.GeometryUtils.randomPointsInGeometry( textGeo, width * height );
+        
 
         data = new Float32Array( width * height * 4 );
         for ( var i = 0, j = 0, l = data.length; i < l; i += 4, j += 1 ) {
