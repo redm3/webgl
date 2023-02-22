@@ -74,7 +74,10 @@
 
       void main() {
         float depth = smoothstep( 10.24, 1.0, gl_FragCoord.z / gl_FragCoord.w );
-        gl_FragColor = vec4( (vec3(0.0, 0.03, 0.05) + (texture2D( map, vUv ).xyz * 0.25)), depth );
+      
+
+        gl_FragColor = vec4(0.0, 0.0, 1.0, depth);
+
       }
     </script>
 
@@ -96,7 +99,8 @@
 
       void main() {
         float depth = smoothstep( 10.24, 1.0, gl_FragCoord.z / gl_FragCoord.w );
-        gl_FragColor = vec4( (vec3(0.0, 0.03, 0.05) + (vPosition * 0.25)), depth );
+        gl_FragColor = vec4(0.0, 0.0, 1.0, depth);
+
       }
     </script>
 
@@ -240,10 +244,10 @@
         }
 
         // Start Creation of DataTexture
-        var textGeo = new THREE.TextGeometry( isWebGL2 ? "File 14" : "WebGL", {
+        var textGeo = new THREE.TextGeometry( isWebGL2 ? "FILE 14" : "WebGL", {
           size: 1.0,
-          height: 0.75,
-          curveSegments: 0,
+          height: 0.1,
+          curveSegments: 0.1,
           font: "helvetiker",
           weight: "bold",
           style: "normal",
