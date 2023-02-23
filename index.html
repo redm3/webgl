@@ -16,6 +16,18 @@
         
       }
 
+      body::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url(./StaticGrain.gif);
+        mix-blend-mode: multiply;
+        opacity: 0.25;
+      }
+
       #info {
         color: white;
         font-size: 30px;
@@ -37,7 +49,7 @@
       .scrolling-text {
         white-space: nowrap; /* Prevents the text from wrapping to a new line */
         /* overflow: hidden; */ /* Hides any text that overflows the container */
-        animation: scroll 30s linear infinite; /* Defines the animation properties */
+        animation: scroll 140s linear infinite; /* Defines the animation properties */
         color: white;
         font-size: 50px;
         /* background-color: grey */
@@ -86,10 +98,10 @@
 
       @keyframes scroll {
         0% {
-          transform: translateX(0%); /* Starts the text off the right side of the screen */
+          transform: translateX(0px); /* Starts the text off the right side of the screen */
         }
         100% {
-          transform: translateX(-100%); /* Ends the text off the left side of the screen */
+          transform: translateX(-14000px); /* Ends the text off the left side of the screen */
         }
       }
     </style>
@@ -102,10 +114,11 @@
     <div id="info">WEBSITE COMING SOON</div>
     <div id="scrolling-container">
       <div class="scrolling-text">
-        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL 
-        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL
-        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL 
-        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL
+        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL 
+        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL
+        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL 
+        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL
+
       </div>
     </div>
 
