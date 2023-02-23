@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     
     <style>
       body {
@@ -16,16 +17,17 @@
       }
 
       #info {
-        color: #ffffff;
-
+        color: white;
+        font-size: 30px;
+        opacity: 0.5;
         font-family: Monospace;
-        font-size: 13px;
+      
         text-align: center;
         font-weight: bold;
 
         position: absolute;
         top: 0px; width: 100%;
-        padding: 5px;
+        padding: 20px;
       }
 
       a {
@@ -41,8 +43,9 @@
         /* background-color: grey */
         /* background-image: url(./StaticGrain.gif); */
         background-size: cover;
+        /* background-color: yellow; */
         z-index: -1;
-        opacity: 0.25;
+        opacity: 0.5;
         /* padding: 20px; */
         /* filter: brightness(20%); */
         
@@ -56,18 +59,30 @@
         width: 100%;
       }
 
-      #info {
-      color: #ffffff;
-      font-family: Monospace;
-      font-size: 35px;
-      text-align: center;
-      font-weight: bold;
-      position: absolute;
-      opacity: 0.25;
-      top: 0px;
-      left: 0px;
-      padding: 20px;
-    }
+
+      .icon-container {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          font-size: 40px;
+          z-index: 9999;
+          display: flex;
+          justify-content: space-between;
+          opacity: 0.3;
+          width: 125px;
+        }
+
+        .icon-container i {
+          color: #1DA1F2; /* Twitter blue color */
+          
+        }
+
+        .icon-container i:hover {
+          color: #7289DA; /* Discord blue color */
+        }
+        
+
+
 
       @keyframes scroll {
         0% {
@@ -79,15 +94,18 @@
       }
     </style>
   </head>
+  <div class="icon-container">
+    <a href="https://twitter.com/file_14"><i class="fab fa-twitter"></i></a>
+    <a href="https://discord.com"><i class="fab fa-discord"></i></a>
+  </div>
   <body>
-    <div id="info">COMING SOON</div>
+    <div id="info">WEBSITE COMING SOON</div>
     <div id="scrolling-container">
       <div class="scrolling-text">
-        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL 
-        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL
-        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL 
-        // FILE14 WEB 3 START UP BASED IN AKL // FILE14 WEB 3 START UP BASED IN AKL
-
+        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL 
+        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL
+        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL 
+        // FILE14 WEB 3 DEV STUDIO BASED IN AKL  // FILE14 WEB 3 DEV STUDIO BASED IN AKL
       </div>
     </div>
 
