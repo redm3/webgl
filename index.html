@@ -33,26 +33,33 @@
 
     .scrolling-text {
       white-space: nowrap;
-      /* Prevents the text from wrapping to a new line */
-      /* overflow: hidden; */
-      /* Hides any text that overflows the container */
       animation: scroll 30s linear infinite;
-      /* Defines the animation properties */
       color: black;
       font-size: 50px;
       font-weight: 1000;
-      font:bolder;
-      /* background-color: grey */
-      /* background-image: url(./StaticGrain.gif); */
-      background-size: cover;
+      font: bolder;
       background-color: yellow;
-      z-index: -1;
+      z-index: 1;
       opacity: 0.5;
       width: max-content;
-      /* padding: 20px; */
-      /* filter: brightness(20%); */
-
+      position: relative;
     }
+
+    .scrolling-text::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(-45deg, transparent 110px, black 0, black 130px, transparent 0);
+      background-position: 0 0;
+      background-size: 130px 130px; 
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+
 
     #scrolling-container {
       /* overflow: hidden; */
@@ -99,6 +106,8 @@
       color: #c4c4c4;
     }
 
+    
+
 
 
 
@@ -115,6 +124,7 @@
     }
   </style>
 </head>
+
 <div class="logo-container">
   <img src="./File14white.png" alt="File14 Studios">
 </div>
