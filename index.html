@@ -179,8 +179,6 @@
       
 
         gl_FragColor = vec4(((vec3(1.0, 0.25, 0.0) + (texture2D(map, vUv).xyz * 0.25)) * 0.5), depth);
-        
-        
 
       }
     </script>
@@ -206,21 +204,12 @@
     
         gl_FragColor = vec4(((vec3(1.0, 0.25, 0.0) + (vPosition * 0.25)) * 0.5), depth);
 
-      
-        
-
       }
     </script>
 
   <script>
 
     let mainText = 'File14'
-
-    switch (window.innerWidth) {
-      case (window.innerWidth < 1750):
-        mainText = 'File\n14'
-        break
-    }
 
     function getQueryString(name, defaultValue) {
       var query = window.location.search.substring(1);
