@@ -28,7 +28,7 @@
       position: absolute;
       top: 0px;
       width: 100%;
-      padding: 70px;
+      padding-top: 70px;
     }
 
     .scrolling-text {
@@ -40,9 +40,10 @@
       font: bolder;
       background-color: yellow;
       z-index: 1;
-      opacity: 0.5;
+      opacity: 0.6;
       width: max-content;
       position: relative;
+      padding: 7px 7px;
     }
 /* 
     .scrolling-text::before {
@@ -59,29 +60,25 @@
       opacity: 0.4;
     } */
 
-
-
     #scrolling-container {
       /* overflow: hidden; */
       /* Hides any text that overflows the container */
       position: fixed;
-      bottom: 0;
+      bottom: 35px;
       left: 0;
       width: 100%;
     }
 
-
     .icon-container {
       position: fixed;
-      padding: 40px;
-      top: 20px;
-      right: 20px;
+      top: 60px;
+      right: 60px;
       font-size: 50px;
       z-index: 9999;
       display: flex;
       justify-content: space-between;
       opacity: 0.3;
-      width: 125px;
+      width: 150px;
     }
 
     .logo-container {
@@ -107,10 +104,6 @@
     }
 
     
-
-
-
-
     @keyframes scroll {
       0% {
         transform: translateX(0px);
@@ -122,6 +115,7 @@
         /* Ends the text off the left side of the screen */
       }
     }
+    
   </style>
 </head>
 
