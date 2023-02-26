@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
   <style>
@@ -30,6 +30,16 @@
       width: 100%;
       padding-top: 70px;
     }
+
+
+/*     canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    } */
 
     .scrolling-text {
       white-space: nowrap;
@@ -128,6 +138,7 @@
 </div>
 
 <body>
+  <div class ="pc"></div>
   <div id="info">WEBSITE UNDER CONSTRUCTION</div>
   <div id="scrolling-container">
     <div class="scrolling-text">
@@ -211,6 +222,14 @@
 
     let mainText = 'File14'
 
+    if (window.innerWidth > 414) {
+      // If the viewport is wider than 414px, show "File14"
+      mainText = 'File14';
+    } else {
+      // Otherwise, show just "14"
+      mainText = 'F14';
+    }
+
     function getQueryString(name, defaultValue) {
       var query = window.location.search.substring(1);
       var vars = query.split("&");
@@ -285,11 +304,17 @@
 
       scene = new THREE.Scene();
 
-      camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
+/*       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
       camera.position.y = 1.5;
       camera.position.z = 4;
       camera.lookAt(scene.position);
+      scene.add(camera); */
+
+      camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
+      camera.position.set(0, 0, 6); // set the distance to the scene
+      camera.lookAt(scene.position);
       scene.add(camera);
+
 
       showColliders = getQueryValue('colliders', 0) != 0;
       var fingerMaterial = new THREE.MeshPhongMaterial({ color: 0x00000 });
@@ -316,16 +341,16 @@
       context.fillStyle = 'black';
       context.fillRect(0, 0, texture_placeholder.width, texture_placeholder.height);
 
-      var backImage = THREE.ImageUtils.loadTexture("media/Back.png");
+      var backImage = THREE.ImageUtils.loadTexture("media/Black.png");
       backImage.image = texture_placeholder;
       backImage.needsUpdate = true;
-      var ceilImage = THREE.ImageUtils.loadTexture("media/Ceiling.png");
+      var ceilImage = THREE.ImageUtils.loadTexture("media/Black.png");
       ceilImage.image = texture_placeholder;
       ceilImage.needsUpdate = true;
-      var floorImage = THREE.ImageUtils.loadTexture("media/Floor.png");
+      var floorImage = THREE.ImageUtils.loadTexture("media/Black.png");
       floorImage.image = texture_placeholder;
       floorImage.needsUpdate = true;
-      var sideImage = THREE.ImageUtils.loadTexture("media/Side.png");
+      var sideImage = THREE.ImageUtils.loadTexture("media/Black.png");
       sideImage.image = texture_placeholder;
       sideImage.needsUpdate = true;
 
@@ -352,7 +377,7 @@
 
       // Start Creation of DataTexture
       var textGeo = new THREE.TextGeometry(mainText, {
-        size: 1.2,
+        size: 1.0,
         height: 0.2,
         curveSegments: 0.0,
         font: "helvetiker",
@@ -363,11 +388,17 @@
       textGeo.computeBoundingBox();
 
       var bounds = textGeo.boundingBox;
+      /* var center = bounds.getCenter(new THREE.Vector3()); */
 
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+
+      // Set the position of the text geometry to the center of the screen
       textGeo.applyMatrix(new THREE.Matrix4().makeTranslation(
-        (bounds.max.x - bounds.min.x) * -0.5,
-        (bounds.max.y - bounds.min.y) * -0.5,
-        (bounds.max.z - bounds.min.z) * -0.5));
+        -(bounds.max.x - bounds.min.x) / 2,   // center horizontally
+        -(bounds.max.y - bounds.min.y) / 2,   // center vertically
+        0                                     // no z-translation needed
+      ));
 
       points = THREE.GeometryUtils.randomPointsInGeometry(textGeo, width * height);
 
@@ -469,13 +500,13 @@
         .connect();
     }
 
-    function onWindowResize() {
+/*     function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('resize', onWindowResize, false); */
 
     function fingerToCollider(i, size) {
       var finger = fingers[i];
@@ -569,7 +600,7 @@
 
     render();
 
-  </script>
+    </script>
 </body>
 
 </html>
