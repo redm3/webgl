@@ -18,28 +18,10 @@
 
     #info {
       color: white;
-      font-size: 30px;
       opacity: 0.5;
-      font-family: Monospace;
-
       text-align: center;
       font-weight: bold;
-
-      position: absolute;
-      top: 0px;
-      width: 100%;
-      padding-top: 70px;
     }
-
-
-/*     canvas {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    } */
 
     .scrolling-text {
       white-space: nowrap;
@@ -55,20 +37,6 @@
       position: relative;
       padding: 7px 7px;
     }
-/* 
-    .scrolling-text::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(-45deg, transparent 110px, black 0, black 130px, transparent 0);
-      background-position: 0 0;
-      background-size: 130px 130px; 
-      z-index: -1;
-      opacity: 0.4;
-    } */
 
     #scrolling-container {
       /* overflow: hidden; */
@@ -79,10 +47,21 @@
       width: 100%;
     }
 
+    .banner {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 50px;
+      padding-left: 15px;
+      padding-top: 15px;
+      font-size: 30px;
+    }
+
     .icon-container {
-      position: fixed;
-      top: 60px;
-      right: 60px;
       font-size: 50px;
       z-index: 9999;
       display: flex;
@@ -92,16 +71,13 @@
     }
 
     .logo-container {
-      position: fixed;
-      top: 20px;
-      left: 20px;
       z-index: 9999;
       opacity: 0.5;
-      max-width: 250px;
+      max-width: 200px;
     }
 
     .logo-container>img {
-      width: 75%;
+      width: 100%;
     }
 
     .icon-container i {
@@ -113,7 +89,28 @@
       color: #c4c4c4;
     }
 
-    
+    @media screen and (max-width: 900px) {
+
+      .banner {
+        flex-direction: column;
+        padding: 0;
+        font-size: 20px;
+      }
+
+      #info {
+        order: 2;
+      }
+
+      .icon-container {
+        order: 1;
+      }
+
+      .scrolling-text {
+        font-size: 30px;
+      }
+
+    }
+
     @keyframes scroll {
       0% {
         transform: translateX(0px);
@@ -129,22 +126,29 @@
   </style>
 </head>
 
-<div class="logo-container">
-  <img src="./File14WhiteonTransparentSMALL.png" alt="File14 Studios">
-</div>
-<div class="icon-container">
-  <a href="https://twitter.com/file_14" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i></a>
-  <a href="https://discord.com" target="_blank" rel="noreferrer"><i class="fab fa-discord"></i></a>
-</div>
-
 <body>
-  <div class ="pc"></div>
-  <div id="info">WEBSITE UNDER CONSTRUCTION</div>
+  <div class="banner">
+
+    <div class="logo-container">
+      <img src="./File14WhiteonTransparentSMALL.png" alt="File14 Studios">
+    </div>
+
+    <div id="info">WEBSITE UNDER CONSTRUCTION</div>
+
+    <div class="icon-container">
+      <a href="https://twitter.com/file_14" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i></a>
+      <a href="https://discord.com" target="_blank" rel="noreferrer"><i class="fab fa-discord"></i></a>
+    </div>
+
+  </div>
+
   <div id="scrolling-container">
     <div class="scrolling-text">
       // FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14
-      STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;
-      // FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;
+      STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A
+      WEB3 DEVELOPMENT COMPANY&nbsp;
+      // FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14 STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;// FILE14
+      STUDIOS: A WEB3 DEVELOPMENT COMPANY&nbsp;
     </div>
   </div>
 
@@ -220,15 +224,9 @@
 
   <script>
 
-    let mainText = 'File14'
-
-    if (window.innerWidth > 900) {
-      // If the viewport is wider than 414px, show "File14"
-      mainText = 'File14';
-    } else {
-      // Otherwise, show just "14"
-      mainText = 'F14';
-    }
+    let mainText = (window.innerWidth > 1050) ? 'File14' : 'F14'
+    // If the viewport is wider than 1050px, show "File14"
+    // Otherwise, show just "14"
 
     function getQueryString(name, defaultValue) {
       var query = window.location.search.substring(1);
@@ -277,33 +275,33 @@
 
     var isWebGL2 = false;
 
-/*     function init() {
-      container = document.createElement('div');
-      document.body.appendChild(container);
-
-      canvas = document.createElement('canvas');
-
-      var tryGL2 = getQueryValue('webgl2', 1);
-
-      if (tryGL2) {
-        // Try creating a WebGL 2 context first
-        gl = canvas.getContext('webgl2', { antialias: false });
-        if (!gl) {
-          gl = canvas.getContext('experimental-webgl2', { antialias: false });
-        }
-        isWebGL2 = !!gl;
-        if (isWebGL2) {
-          console.log("I can haz flag, so WebGL 2 is yes!")
-        }
-      }
-
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, context: gl });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.sortObjects = false;
-      container.appendChild(renderer.domElement);
-
-      scene = new THREE.Scene(); */
-      function init() {
+    /*     function init() {
+          container = document.createElement('div');
+          document.body.appendChild(container);
+    
+          canvas = document.createElement('canvas');
+    
+          var tryGL2 = getQueryValue('webgl2', 1);
+    
+          if (tryGL2) {
+            // Try creating a WebGL 2 context first
+            gl = canvas.getContext('webgl2', { antialias: false });
+            if (!gl) {
+              gl = canvas.getContext('experimental-webgl2', { antialias: false });
+            }
+            isWebGL2 = !!gl;
+            if (isWebGL2) {
+              console.log("I can haz flag, so WebGL 2 is yes!")
+            }
+          }
+    
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, context: gl });
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.sortObjects = false;
+          container.appendChild(renderer.domElement);
+    
+          scene = new THREE.Scene(); */
+    function init() {
       container = document.createElement('div');
       document.body.appendChild(container);
 
@@ -333,11 +331,11 @@
       // Listen to the window resize event and call the onWindowResize function
       window.addEventListener('resize', onWindowResize, false);
 
-/*       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
-      camera.position.y = 1.5;
-      camera.position.z = 4;
-      camera.lookAt(scene.position);
-      scene.add(camera); */
+      /*       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
+            camera.position.y = 1.5;
+            camera.position.z = 4;
+            camera.lookAt(scene.position);
+            scene.add(camera); */
 
       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
       camera.position.set(0, 0, 6); // set the distance to the scene
@@ -629,7 +627,7 @@
 
     render();
 
-    </script>
+  </script>
 </body>
 
 </html>
