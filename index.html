@@ -4,13 +4,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
   <style>
     body {
       font-family: Monospace;
-      /* background-color: #000000; */
+      background-color: #000000;
       margin: 0px;
       overflow: hidden;
 
@@ -277,7 +277,33 @@
 
     var isWebGL2 = false;
 
-    function init() {
+/*     function init() {
+      container = document.createElement('div');
+      document.body.appendChild(container);
+
+      canvas = document.createElement('canvas');
+
+      var tryGL2 = getQueryValue('webgl2', 1);
+
+      if (tryGL2) {
+        // Try creating a WebGL 2 context first
+        gl = canvas.getContext('webgl2', { antialias: false });
+        if (!gl) {
+          gl = canvas.getContext('experimental-webgl2', { antialias: false });
+        }
+        isWebGL2 = !!gl;
+        if (isWebGL2) {
+          console.log("I can haz flag, so WebGL 2 is yes!")
+        }
+      }
+
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, context: gl });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.sortObjects = false;
+      container.appendChild(renderer.domElement);
+
+      scene = new THREE.Scene(); */
+      function init() {
       container = document.createElement('div');
       document.body.appendChild(container);
 
@@ -303,6 +329,9 @@
       container.appendChild(renderer.domElement);
 
       scene = new THREE.Scene();
+
+      // Listen to the window resize event and call the onWindowResize function
+      window.addEventListener('resize', onWindowResize, false);
 
 /*       camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1024);
       camera.position.y = 1.5;
@@ -500,13 +529,13 @@
         .connect();
     }
 
-/*     function onWindowResize() {
+    function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    window.addEventListener('resize', onWindowResize, false); */
+    window.addEventListener('resize', onWindowResize, false);
 
     function fingerToCollider(i, size) {
       var finger = fingers[i];
